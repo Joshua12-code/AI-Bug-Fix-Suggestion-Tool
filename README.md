@@ -1,82 +1,122 @@
-# 🛠️ AI Bug Fix Suggestion Tool
+# 🛠️ AI Bug Fix & Suggestion Tool
 
-An **AI-powered web application** designed to help developers automatically detect and suggest fixes for bugs in their code. This tool leverages **Google Gemini LLM** (via API) to provide intelligent bug fix recommendations and code improvements, streamlining the debugging process for developers.
-
----
-
-## 📜 Table of Contents
-
-- [About the Project](#about-the-project)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Architecture Overview](#architecture-overview)
-- [Screenshots](#screenshots)
-- [Setup Instructions](#setup-instructions)
-- [Gemini LLM Integration](#gemini-llm-integration)
-- [Future Enhancements](#future-enhancements)
-- [License](#license)
+An intelligent code analysis tool powered by **Google Gemini LLM** that detects bugs, suggests fixes, and provides improved versions of the input code using Natural Language Processing and AI.
 
 ---
 
-## 📖 About the Project
+## 📌 Project Description
 
-Debugging code is a common yet time-consuming task in software development. The **AI Bug Fix Suggestion Tool** assists developers by:
+**AI Bug Fix & Suggestion Tool** is a web-based application that allows developers to paste or write code into an editor and receive:
 
-- Analyzing submitted code
-- Identifying potential issues
-- Suggesting optimized or corrected versions of the code
+- 🔍 A list of identified **issues** in the code.
+- 💡 AI-generated **suggestions** to improve code quality.
+- 🔧 A **corrected version** of the code.
 
-The frontend provides a rich code editor experience while the backend connects with **Gemini LLM API** to handle AI logic and suggestion processing.
+This tool is designed to enhance productivity, reduce debugging time, and provide learning feedback, especially for students, beginner developers, and code reviewers.
 
 ---
 
-## 🧰 Tech Stack
+## ⚙️ Tech Stack
 
-| Layer        | Technology                        |
-|--------------|-----------------------------------|
-| Frontend     | React.js, JavaScript, Tailwind CSS|
-| Backend      | Node.js, Express.js               |
-| AI Service   | Google Gemini API (Large Language Model) |
-| Code Editor  | Monaco Editor                     |
-| HTTP Client  | Axios                             |
-| Version Control | Git & GitHub                   |
+### 🔵 Frontend
+- **React.js** – For building responsive UI.
+- **CodeMirror** – For a syntax-highlighted code editor.
+- **HTML/CSS** – For styling and structure.
+
+### 🟢 Backend
+- **Node.js + Express.js** – Handles API requests.
+- **Google Gemini Pro API (LLM)** – Used for natural language understanding and code fixing.
+- **Axios** – For handling HTTP requests from frontend to backend.
+
+### 🧠 AI/LLM Integration
+- **Google Gemini Pro** – A powerful LLM (Large Language Model) capable of understanding programming languages, identifying issues, and suggesting context-aware fixes.
+- Prompt engineering is used to structure the input for the Gemini model and parse the results into actionable insights.
 
 ---
 
 ## 🚀 Features
 
-- 🔍 Submit buggy code and receive intelligent AI-generated suggestions
-- ✨ Monaco Editor with syntax highlighting and line numbers
-- 🔗 Backend API integration for LLM communication
-- 📡 Handles code in JavaScript, Python, Java (extendable)
-- ⚙️ Easy to integrate with any CI/CD pipeline
+- 📝 Paste or write code in a rich code editor.
+- ⚠️ Detect bugs and errors using AI.
+- 💬 Receive suggestions for better coding practices.
+- 🔄 View the AI-corrected version of your code.
+- 🔎 Analysis feedback is shown instantly in an interactive UI.
 
 ---
 
-## 🧠 Gemini LLM Integration
+## 📷 Screenshots
 
-We use **Google Gemini Pro (or Gemini 1.5)** API to analyze and suggest bug fixes. Here's how it works:
+### ✅ Code Editor Interface
+![Code Editor](./screenshots/Screenshot%202025-07-11%20013955.png)
 
-### 🔗 Connectivity Flow:
-1. User pastes code into the editor and clicks **"Fix Bug"**.
-2. Code is sent from the frontend (`React`) via `Axios` to the backend (`Express`).
-3. Backend constructs a structured prompt and sends it to the Gemini LLM API using `Google Generative AI SDK` or direct REST endpoint.
-4. Gemini LLM analyzes the prompt and responds with bug descriptions and corrected code.
-5. Backend parses the response and sends it back to the frontend for display.
+---
 
-### 🔐 Example Code to Connect with Gemini:
-```js
-import { GoogleGenerativeAI } from "@google/generative-ai";
+### 🔄 Analyzing State
+![Analyzing](./screenshots/Screenshot%202025-07-11%20014014.png)
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+---
 
-export const getBugFix = async (req, res) => {
-  const { code } = req.body;
+### 🧠 AI Suggestions and Fixes
+![Fix Suggestions](./screenshots/Screenshot%202025-07-11%20014040.png)
 
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-  const prompt = `Analyze the following code and suggest a fixed version:\n\n${code}`;
-  const result = await model.generateContent(prompt);
-  const suggestion = await result.response.text();
+---
 
-  res.json({ suggestion });
-};
+## 🔗 How It Works
+
+1. ✍️ The user enters or pastes code into the editor.
+2. ⚙️ On clicking **"Analyze Code"**, the frontend sends the code to the backend via an API.
+3. 🤖 The backend formulates a structured prompt and sends it to the **Gemini LLM**.
+4. 📬 The AI responds with:
+   - Detected bugs/issues
+   - Improvement suggestions
+   - The corrected code
+5. 🖥️ Results are displayed on the same page for review.
+
+---
+
+## 🏗️ Folder Structure
+
+ai-bug-fix-tool/
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ │ └── Editor.js
+│ │ ├── App.js
+│ │ └── index.js
+│
+├── backend/
+│ ├── server.js (Handles API & LLM integration)
+│
+├── .gitignore
+├── README.md
+
+
+---
+
+## 🧑‍💻 Developer Guide
+
+### Prerequisites
+
+- Node.js and npm installed
+- API Key for Google Gemini (via Vertex AI or PaLM API)
+- Git (for cloning and versioning)
+
+### Installation Steps
+
+```bash
+# Clone the repo
+git clone https://github.com/Joshua12-code/AI-Bug-Fix-Suggestion-Tool.git
+cd AI-Bug-Fix-Suggestion-Tool
+
+# Install dependencies for frontend
+cd frontend
+npm install
+
+# Run the frontend
+npm start
+
+# Setup backend (in separate terminal)
+cd ../backend
+npm install
+node server.js
