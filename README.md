@@ -11,6 +11,7 @@ An intelligent code analysis tool powered by **Google Gemini LLM** that detects 
 - 🔍 A list of identified **issues** in the code.
 - 💡 AI-generated **suggestions** to improve code quality.
 - 🔧 A **corrected version** of the code.
+<img width="1846" height="1056" alt="Screenshot 2025-07-11 014040" src="https://github.com/user-attachments/assets/a8ac6842-9f33-46f4-b60e-f45114bdc0ef" />
 
 This tool is designed to enhance productivity, reduce debugging time, and provide learning feedback, especially for students, beginner developers, and code reviewers.
 
