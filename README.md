@@ -8,10 +8,9 @@ An intelligent code analysis tool powered by **Google Gemini LLM** that detects 
 
 **AI Bug Fix & Suggestion Tool** is a web-based application that allows developers to paste or write code into an editor and receive:
 
-- 🔍 A list of identified **issues** in the code.
-- 💡 AI-generated **suggestions** to improve code quality.
-- 🔧 A **corrected version** of the code.
-<img width="1846" height="1056" alt="Screenshot 2025-07-11 014040" src="https://github.com/user-attachments/assets/a8ac6842-9f33-46f4-b60e-f45114bdc0ef" />
+* 🔍 A list of identified **issues** in the code.
+* 💡 AI-generated **suggestions** to improve code quality.
+* 🔧 A **corrected version** of the code.
 
 This tool is designed to enhance productivity, reduce debugging time, and provide learning feedback, especially for students, beginner developers, and code reviewers.
 
@@ -20,104 +19,118 @@ This tool is designed to enhance productivity, reduce debugging time, and provid
 ## ⚙️ Tech Stack
 
 ### 🔵 Frontend
-- **React.js** – For building responsive UI.
-- **CodeMirror** – For a syntax-highlighted code editor.
-- **HTML/CSS** – For styling and structure.
+
+* **React.js** – For building responsive UI.
+* **CodeMirror** – For syntax-highlighted code editing.
+* **HTML/CSS** – For styling and layout.
 
 ### 🟢 Backend
-- **Node.js + Express.js** – Handles API requests.
-- **Google Gemini Pro API (LLM)** – Used for natural language understanding and code fixing.
-- **Axios** – For handling HTTP requests from frontend to backend.
+
+* **Node.js + Express.js** – To handle requests.
+* **Axios** – For communication between frontend and backend.
 
 ### 🧠 AI/LLM Integration
-- **Google Gemini Pro** – A powerful LLM (Large Language Model) capable of understanding programming languages, identifying issues, and suggesting context-aware fixes.
-- Prompt engineering is used to structure the input for the Gemini model and parse the results into actionable insights.
+
+* **Google Gemini Pro (LLM)** – Used to analyze and enhance code by:
+
+  * Understanding code structure.
+  * Identifying bugs.
+  * Suggesting improvements.
+  * Returning corrected code.
+* Prompt engineering is applied to format user input effectively.
 
 ---
 
 ## 🚀 Features
 
-- 📝 Paste or write code in a rich code editor.
-- ⚠️ Detect bugs and errors using AI.
-- 💬 Receive suggestions for better coding practices.
-- 🔄 View the AI-corrected version of your code.
-- 🔎 Analysis feedback is shown instantly in an interactive UI.
+* 📝 Write or paste code in an editor.
+* ⚠️ Detect code issues automatically using AI.
+* 💬 View intelligent suggestions for code improvement.
+* 🔄 Get a corrected version of your code instantly.
+* 💻 Fully interactive web UI.
 
 ---
 
 ## 📷 Screenshots
 
 ### ✅ Code Editor Interface
-![Code Editor](./screenshots/Screenshot%202025-07-11%20013955.png)
 
----
+![Editor](frontend/public/screenshots/editor.png)
 
-### 🔄 Analyzing State
-![Analyzing](./screenshots/Screenshot%202025-07-11%20014014.png)
+### ⏳ Analyzing State
 
----
+![Analyzing](frontend/public/screenshots/analyzing.png)
 
 ### 🧠 AI Suggestions and Fixes
-![Fix Suggestions](./screenshots/Screenshot%202025-07-11%20014040.png)
+
+![Suggestions](frontend/public/screenshots/fixed-code.png)
 
 ---
 
 ## 🔗 How It Works
 
-1. ✍️ The user enters or pastes code into the editor.
-2. ⚙️ On clicking **"Analyze Code"**, the frontend sends the code to the backend via an API.
-3. 🤖 The backend formulates a structured prompt and sends it to the **Gemini LLM**.
-4. 📬 The AI responds with:
-   - Detected bugs/issues
-   - Improvement suggestions
-   - The corrected code
-5. 🖥️ Results are displayed on the same page for review.
+1. 🧑‍💻 User enters code into the web-based editor.
+2. 📩 Frontend sends code to the backend API.
+3. 🤖 Backend creates a structured prompt and sends it to **Gemini LLM**.
+4. 📬 Gemini returns:
+
+   * Bug analysis
+   * Suggestions
+   * Fixed code
+5. 💾 Results are shown interactively on the UI.
 
 ---
 
-## 🏗️ Folder Structure
+## 🗂️ Folder Structure
 
+```
 ai-bug-fix-tool/
+├── backend/
+│   └── server.js                # Handles API & Gemini LLM logic
 │
 ├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ │ └── Editor.js
-│ │ ├── App.js
-│ │ └── index.js
-│
-├── backend/
-│ ├── server.js (Handles API & LLM integration)
+│   ├── public/
+│   │   └── screenshots/         # Screenshots for README
+│   │       ├── editor.png
+│   │       ├── analyzing.png
+│   │       └── fixed-code.png
+│   └── src/
+│       ├── components/
+│       │   └── Editor.js        # Code editor component
+│       ├── App.js               # Main app layout
+│       └── index.js             # App entry point
 │
 ├── .gitignore
-├── README.md
-
+└── README.md
+```
 
 ---
 
-## 🧑‍💻 Developer Guide
+## 🧑‍💻 Developer Setup
 
 ### Prerequisites
 
-- Node.js and npm installed
-- API Key for Google Gemini (via Vertex AI or PaLM API)
-- Git (for cloning and versioning)
+* Node.js & npm
+* API Key for **Google Gemini Pro** (via Vertex AI or PaLM API)
+* Git (to clone the repo)
 
 ### Installation Steps
 
 ```bash
-# Clone the repo
+# Clone the project
 git clone https://github.com/Joshua12-code/AI-Bug-Fix-Suggestion-Tool.git
 cd AI-Bug-Fix-Suggestion-Tool
 
-# Install dependencies for frontend
+# Setup Frontend
 cd frontend
 npm install
-
-# Run the frontend
 npm start
 
-# Setup backend (in separate terminal)
+# Setup Backend (open new terminal)
 cd ../backend
 npm install
 node server.js
+```
+
+---
+
