@@ -1,0 +1,6 @@
+com\example\bugfixer\service\AIService.class
+com\example\bugfixer\BugFixerApplication$1.class
+com\example\bugfixer\model\CodeAnalysisResult.class
+com\example\bugfixer\controller\CodeAnalysisController.class
+com\example\bugfixer\model\CodeRequest.class
+com\example\bugfixer\BugFixerApplication.class

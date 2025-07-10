@@ -1,0 +1,10 @@
+# Ignore node_modules and other unnecessary files
+node_modules/
+.env
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+/build
+/dist
+frontend/build
