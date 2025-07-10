@@ -55,15 +55,18 @@ This tool is designed to enhance productivity, reduce debugging time, and provid
 
 ### ✅ Code Editor Interface
 
-![Editor](frontend/public/screenshots/editor.png)
+<img width="1903" height="1072" alt="Screenshot 2025-07-11 013955" src="https://github.com/user-attachments/assets/c70d1406-72c4-4d7e-b5ad-556ea2d20224" />
+
 
 ### ⏳ Analyzing State
 
-![Analyzing](frontend/public/screenshots/analyzing.png)
+<img width="1820" height="964" alt="Screenshot 2025-07-11 014014" src="https://github.com/user-attachments/assets/d0bb539b-0ac7-46c1-87e0-ad185780f8c3" />
+
 
 ### 🧠 AI Suggestions and Fixes
 
-![Suggestions](frontend/public/screenshots/fixed-code.png)
+<img width="1846" height="1056" alt="Screenshot 2025-07-11 014040" src="https://github.com/user-attachments/assets/f6fc2d93-6fa1-434d-8c9e-e2dc76cc4fca" />
+
 
 ---
 
