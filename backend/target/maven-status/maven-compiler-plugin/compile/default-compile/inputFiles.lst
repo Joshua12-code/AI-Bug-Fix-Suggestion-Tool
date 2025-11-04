@@ -1,5 +1,5 @@
-C:\Users\Joshua\Downloads\ai-bug-fix-tool (1)\backend\src\main\java\com\example\bugfixer\model\CodeAnalysisResult.java
-C:\Users\Joshua\Downloads\ai-bug-fix-tool (1)\backend\src\main\java\com\example\bugfixer\BugFixerApplication.java
-C:\Users\Joshua\Downloads\ai-bug-fix-tool (1)\backend\src\main\java\com\example\bugfixer\service\AIService.java
-C:\Users\Joshua\Downloads\ai-bug-fix-tool (1)\backend\src\main\java\com\example\bugfixer\controller\CodeAnalysisController.java
-C:\Users\Joshua\Downloads\ai-bug-fix-tool (1)\backend\src\main\java\com\example\bugfixer\model\CodeRequest.java
+C:\Users\Joshua\AI-Bug-Fix-Suggestion-Tool\backend\src\main\java\com\example\bugfixer\service\AIService.java
+C:\Users\Joshua\AI-Bug-Fix-Suggestion-Tool\backend\src\main\java\com\example\bugfixer\BugFixerApplication.java
+C:\Users\Joshua\AI-Bug-Fix-Suggestion-Tool\backend\src\main\java\com\example\bugfixer\controller\CodeAnalysisController.java
+C:\Users\Joshua\AI-Bug-Fix-Suggestion-Tool\backend\src\main\java\com\example\bugfixer\model\CodeAnalysisResult.java
+C:\Users\Joshua\AI-Bug-Fix-Suggestion-Tool\backend\src\main\java\com\example\bugfixer\model\CodeRequest.java

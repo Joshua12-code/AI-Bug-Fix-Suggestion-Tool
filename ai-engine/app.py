@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from flask import Flask, request, jsonify
 import google.generativeai as genai
 import re
@@ -7,8 +10,8 @@ app = Flask(__name__)
 CORS(app)  # Enables cross-origin requests for localhost:3000
 
 # Replace with your real Gemini API key
-genai.configure(api_key="AIzaSyDCMTtUMcSbXj2scnL-9D8XJHyX5KajdJk")
-model = genai.GenerativeModel("gemini-1.5-flash")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 @app.route('/analyze', methods=['POST'])
 def analyze_code():
@@ -61,4 +64,4 @@ def analyze_code():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host="0.0.0.0", port=5000)
