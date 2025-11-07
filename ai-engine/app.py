@@ -7,8 +7,10 @@ import re
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://ai-bug-fix-suggestion-tool-1.onrender.com"}})
-
+CORS(app, resources={r"/*": {"origins": [
+    "https://ai-bug-fix-suggestion-tool-1.onrender.com",
+    "https://690e476b80833010e0e46a5e--ai-bug-fix.netlify.app"
+]}})
 # ✅ Configure Gemini API Key
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
