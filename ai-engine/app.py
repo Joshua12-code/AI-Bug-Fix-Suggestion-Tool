@@ -1,14 +1,19 @@
 from flask import Flask, request, jsonify
 import google.generativeai as genai
 import re
+import os
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)  # Enables cross-origin requests for localhost:3000
 
-# Replace with your real Gemini API key
-genai.configure(api_key="AIzaSyDCMTtUMcSbXj2scnL-9D8XJHyX5KajdJk")
-model = genai.GenerativeModel("gemini-1.5-flash")
+# ✅ Use your real Gemini API key here
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+
+
+# ✅ FIX: use the correct model name
+# Older "gemini-1.5-flash" is not valid — must use "-latest"
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 @app.route('/analyze', methods=['POST'])
 def analyze_code():
@@ -37,11 +42,11 @@ def analyze_code():
     """
 
     try:
+        # ✅ FIX: correct API call method for the latest SDK
         response = model.generate_content(prompt)
         content = response.text
 
-        # Debug: log full LLM output
-        print("--- LLM Output ---\n", content)
+        print("--- LLM Output ---\n", content)  # Debug output
 
         issues_match = re.search(r"🛠️ Issues:\s*(.*?)(?:\n\n|💡 Suggestions:)", content, re.DOTALL)
         suggestions_match = re.search(r"💡 Suggestions:\s*(.*?)(?:\n\n|🔧 Fixed Code:)", content, re.DOTALL)
@@ -58,7 +63,10 @@ def analyze_code():
         })
 
     except Exception as e:
+        print("❌ Error:", str(e))
         return jsonify({"error": str(e)}), 500
 
+
 if __name__ == '__main__':
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
