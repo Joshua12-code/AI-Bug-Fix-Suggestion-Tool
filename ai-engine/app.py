@@ -21,7 +21,7 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 def analyze_code():
     data = request.json
     code = data.get('code')
-    language = data.get('language')
+    language = data.get('language', 'text')  # default to text if no language provided
 
     prompt = f"""
     Analyze this {language} code and return ONLY in the following format:
@@ -35,8 +35,8 @@ def analyze_code():
     - suggestion 2
 
     🔧 Fixed Code:
-    ```java
-    // fixed code here
+    ```{language}
+    # fixed code here
     ```
 
     Code:
@@ -44,7 +44,7 @@ def analyze_code():
     """
 
     try:
-        # ✅ Correct API call for latest SDK
+        # ✅ Call Gemini model
         response = model.generate_content(prompt)
         content = response.text
 
@@ -52,7 +52,7 @@ def analyze_code():
 
         issues_match = re.search(r"🛠️ Issues:\s*(.*?)(?:\n\n|💡 Suggestions:)", content, re.DOTALL)
         suggestions_match = re.search(r"💡 Suggestions:\s*(.*?)(?:\n\n|🔧 Fixed Code:)", content, re.DOTALL)
-        fixed_code_match = re.search(r"🔧 Fixed Code:\s*```(?:java)?\n([\s\S]*?)```", content)
+        fixed_code_match = re.search(r"🔧 Fixed Code:\s*```(?:.*?)?\n([\s\S]*?)```", content)
 
         issues = issues_match.group(1).strip().split("\n") if issues_match else []
         suggestions = suggestions_match.group(1).strip().split("\n") if suggestions_match else []
@@ -67,6 +67,7 @@ def analyze_code():
     except Exception as e:
         print("❌ Error:", str(e))
         return jsonify({"error": str(e)}), 500
+
 
 
 if __name__ == '__main__':
