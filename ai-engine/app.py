@@ -54,8 +54,8 @@ Code to analyze:
 """
 
     try:
-        # Call Gemini model
-        response = model.generate_content(prompt=prompt)
+        # ✅ Corrected Gemini call (prompt is positional, not keyword)
+        response = model.generate_content(prompt)  # Remove prompt= keyword
         content = response.text
 
         print("--- LLM Output ---\n", content)
@@ -78,6 +78,7 @@ Code to analyze:
     except Exception as e:
         print("❌ Error:", str(e))
         return jsonify({"error": str(e)}), 500
+
 
 # ----------------------------
 # Run Flask app
