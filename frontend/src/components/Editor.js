@@ -14,7 +14,8 @@ const CodeEditor = () => {
         setResult(null);
 
         try {
-            const response = await axios.post('http://localhost:5000/analyze', {
+            // ✅ UPDATED BACKEND URL (use Render’s deployed endpoint)
+            const response = await axios.post('https://ai-bug-fix-suggestion-tool-1.onrender.com/analyze', {
                 language: "java",
                 code: code
             });

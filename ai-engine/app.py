@@ -7,7 +7,7 @@ import re
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Enables cross-origin requests for localhost:3000
+CORS(app, resources={r"/*": {"origins": "https://ai-bug-fix-suggestion-tool-1.onrender.com"}})
 
 # ✅ Configure Gemini API Key
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
