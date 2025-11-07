@@ -1,18 +1,18 @@
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from flask import Flask, request, jsonify
 import google.generativeai as genai
 import re
-import os
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)  # Enables cross-origin requests for localhost:3000
 
-# ✅ Use your real Gemini API key here
+# ✅ Configure Gemini API Key
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
-
-# ✅ FIX: use the correct model name
-# Older "gemini-1.5-flash" is not valid — must use "-latest"
+# ✅ Use latest Gemini model
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 @app.route('/analyze', methods=['POST'])
@@ -42,11 +42,11 @@ def analyze_code():
     """
 
     try:
-        # ✅ FIX: correct API call method for the latest SDK
+        # ✅ Correct API call for latest SDK
         response = model.generate_content(prompt)
         content = response.text
 
-        print("--- LLM Output ---\n", content)  # Debug output
+        print("--- LLM Output ---\n", content)
 
         issues_match = re.search(r"🛠️ Issues:\s*(.*?)(?:\n\n|💡 Suggestions:)", content, re.DOTALL)
         suggestions_match = re.search(r"💡 Suggestions:\s*(.*?)(?:\n\n|🔧 Fixed Code:)", content, re.DOTALL)
@@ -68,5 +68,6 @@ def analyze_code():
 
 
 if __name__ == '__main__':
+    # ✅ Important for Render or any cloud hosting
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
